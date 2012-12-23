@@ -38,6 +38,7 @@ class KunenaControllerInstall extends JControllerLegacy {
 
 		$start = JRequest::getBool('start', false);
 
+		/*
 		// Workaround situation where KunenaForum class doesn't exist (api.php was cached)
 		if (!class_exists('KunenaForum')) {
 			// TODO: add version check
@@ -51,6 +52,7 @@ class KunenaControllerInstall extends JControllerLegacy {
 			$this->setRedirect('index.php?option=com_kunena&view=install&task=prepare&try='.$try.$start.'&'.JSession::getFormToken().'=1');
 			$this->redirect();
 		}
+		*/
 
 		$this->model->install ();
 

@@ -107,16 +107,13 @@
 				<exclude name="language/**"/>
 				<exclude name="install/**"/>
 			</fileset>
-		</copy>	
-		<copy todir="${tmp_dir}/install">
-			<fileset dir="${project_dir}/${kunena.admin}/install" />
-		</copy>	
+		</copy>
 		<copy todir="${tmp_dir}/site">
 			<fileset dir="${project_dir}/${kunena.site}">
 				<exclude name="language/*-*/**"/>
 				<exclude name="template/**/params.ini"/>
 			</fileset>
-		</copy>	
+		</copy>
 	</target>
 
 	<target name="build" depends="init">
@@ -153,20 +150,16 @@
 		<move file="${tmp_dir}/site/COPYRIGHT.php" todir="${build_dir}" overwrite="true" filtering="true" />
 		<copy file="${project_dir}/README.md" tofile="${build_dir}/README.txt" overwrite="true" filtering="true" />
 		<copy file="${project_dir}/LICENSE.txt" tofile="${build_dir}/LICENSE.txt" overwrite="true" filtering="true" />
-
-		<move file="${tmp_dir}/install/media/kunena-logo-48-black.png" todir="${build_dir}/install/media" overwrite="true" />
-		<move todir="${build_dir}/install" overwrite="true" filtering="true" >
-			<fileset dir="${tmp_dir}/install">
-				<include name="index.html"/>
-				<include name="install.kunena.php"/>
-				<include name="install.script.php"/>
-				<include name="entrypoints/**"/>
-				<include name="media/index.html"/>
-			</fileset>
-		</move>
+		<copy todir="${build_dir}/install" overwrite="true" filtering="true">
+			<fileset dir="${project_dir}/${kunena.admin}/install" />
+		</copy>
+		<move file="${tmp_dir}/admin/kunena.php" tofile="${build_dir}/install/entrypoints/admin.kunena.php" overwrite="true" filtering="true" />
+		<move file="${tmp_dir}/admin/install.php" todir="${build_dir}/install/entrypoints/" overwrite="true" filtering="true" />
+		<move file="${tmp_dir}/admin/api.php" todir="${build_dir}/install/entrypoints/" overwrite="true" filtering="true" />
+		<move file="${tmp_dir}/site/kunena.php" todir="${build_dir}/install/entrypoints/" overwrite="true" filtering="true" />
+		<move file="${tmp_dir}/site/router.php" todir="${build_dir}/install/entrypoints/" overwrite="true" filtering="true" />
 
 		<!-- Rename component entry files so that they replace the installer files just before the end of the installation process. -->
-		<move file="${tmp_dir}/admin/api.php" tofile="${tmp_dir}/admin/api.new.php" overwrite="true" filtering="true" />
 		<move todir="${build_dir}/archive" includeEmptyDirs="no">
 			<fileset dir="${tmp_dir}/admin/archive" />
 		</move>
@@ -328,7 +321,6 @@
 		<language tag="vi-VN" />
 		<language tag="zh-CN" />
 		<language tag="zh-TW" />
-		<archive destfile="${build_dir}/archive/com_kunena-install" basedir="${tmp_dir}/install" />
 		<archive destfile="${build_dir}/archive/com_kunena-admin" basedir="${tmp_dir}/admin" />
 		<archive destfile="${build_dir}/archive/com_kunena-site" basedir="${tmp_dir}/site" />
 		<archive destfile="${build_dir}/archive/com_kunena-media" basedir="${tmp_dir}/media" />
