@@ -23,7 +23,7 @@ class Com_KunenaInstallerScript {
 			'0' => '5.5' // Preferred version
 		),
 		'Joomla!' => array (
-			'2.5' => '2.5.8',
+			'2.5' => '2.5.6',
 			'3.0' => '3.0.2',
 			'0' => '2.5.8' // Preferred version
 		)
@@ -156,8 +156,12 @@ class Com_KunenaInstallerScript {
 		if (version_compare($version, $installed, '>=')) return true;
 
 		// Check if we can downgrade to the current version
-		if (class_exists('KunenaInstaller') && KunenaInstaller::canDowngrade($version)) {
-			return true;
+		if (class_exists('KunenaInstaller')) {
+			if (KunenaInstaller::canDowngrade($version)) return true;
+		} else {
+			// Workaround when Kunena files were removed to allow downgrade between bugfix versions.
+			$major = preg_replace('/(\d+.\d+)\..*$/', '\\1', $version);
+			if (version_compare($installed, $major, '>')) return true;
 		}
 
 		$app->enqueueMessage(sprintf('Sorry, it is not possible to downgrade Kunena %s to version %s.', $installed, $version), 'notice');
