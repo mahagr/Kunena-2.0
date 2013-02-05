@@ -153,11 +153,13 @@
 		<copy todir="${build_dir}/install" overwrite="true" filtering="true">
 			<fileset dir="${project_dir}/${kunena.admin}/install" />
 		</copy>
-		<move file="${tmp_dir}/admin/kunena.php" tofile="${build_dir}/install/entrypoints/admin.kunena.php" overwrite="true" filtering="true" />
-		<move file="${tmp_dir}/admin/install.php" todir="${build_dir}/install/entrypoints/" overwrite="true" filtering="true" />
-		<move file="${tmp_dir}/admin/api.php" todir="${build_dir}/install/entrypoints/" overwrite="true" filtering="true" />
-		<move file="${tmp_dir}/site/kunena.php" todir="${build_dir}/install/entrypoints/" overwrite="true" filtering="true" />
-		<move file="${tmp_dir}/site/router.php" todir="${build_dir}/install/entrypoints/" overwrite="true" filtering="true" />
+		<move file="${tmp_dir}/admin/index.html" todir="${build_dir}" overwrite="true" filtering="no" />
+		<move file="${tmp_dir}/admin/kunena.php" todir="${build_dir}" overwrite="true" filtering="true" />
+		<move file="${tmp_dir}/admin/install.php" todir="${build_dir}" overwrite="true" filtering="true" />
+		<move file="${tmp_dir}/admin/api.php" todir="${build_dir}" overwrite="true" filtering="true" />
+		<move file="${tmp_dir}/site/index.html" todir="${build_dir}/site" overwrite="true" filtering="no" />
+		<move file="${tmp_dir}/site/kunena.php" todir="${build_dir}/site" overwrite="true" filtering="true" />
+		<move file="${tmp_dir}/site/router.php" todir="${build_dir}/site" overwrite="true" filtering="true" />
 
 		<!-- Rename component entry files so that they replace the installer files just before the end of the installation process. -->
 		<move todir="${build_dir}/archive" includeEmptyDirs="no">

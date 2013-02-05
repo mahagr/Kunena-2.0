@@ -31,13 +31,7 @@ class Com_KunenaInstallerScript {
 	protected $extensions = array ('dom', 'gd', 'json', 'pcre', 'SimpleXML');
 
 	public function install($parent) {
-		$success = JFile::copy(
-				JPATH_ADMINISTRATOR . '/components/com_kunena/install/entrypoints/install.php',
-				JPATH_ADMINISTRATOR . '/components/com_kunena/install.php');
-		$success &= JFile::copy(
-				JPATH_ADMINISTRATOR . '/components/com_kunena/install/entrypoints/admin.kunena.php',
-				JPATH_ADMINISTRATOR . '/components/com_kunena/kunena.php');
-		return $success;
+		return true;
 	}
 
 	public function discover_install($parent) {
