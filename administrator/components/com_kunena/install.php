@@ -16,13 +16,6 @@ defined ( '_JEXEC' ) or die ();
 $view = JRequest::getCmd ( 'view' );
 $task = JRequest::getCmd ( 'task' );
 
-// Akeeba Live Update
-if($view == 'liveupdate') {
-	require_once __DIR__ . '/liveupdate/liveupdate.php';
-	LiveUpdate::handleRequest();
-	return;
-}
-
 // Special case for developer versions.
 if ($view != 'install' && class_exists('KunenaForum') && KunenaForum::isDev()) {
 	// Developer version found: Check if latest version of Kunena has been installed. If not, prepare installation.

@@ -23,11 +23,6 @@ Joomla
 Copyright:	2005 - 2012 Open Source Matters, Inc. All rights reserved.
 License:	GPLv2 or later; http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 
-LiveUpdate
-----------
-Copyright:	©2011 Nicholas K. Dionysopoulos / AkeebaBackup.com
-License:	LGPLv3 or later; http://www.gnu.org/copyleft/lesser.html
-
 Nawte
 -----
 Copyright:	2008 Jean-Nicolas Jolivet (www.silverscripting.com)
