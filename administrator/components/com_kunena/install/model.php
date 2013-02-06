@@ -115,8 +115,6 @@ class KunenaModelInstall extends JModelLegacy {
 		$this->uninstallPlugin('kunena', 'kunena');
 		$this->uninstallPlugin('kunena', 'uddeim');
 		$this->uninstallPlugin('finder', 'kunena');
-		$this->uninstallPlugin('quickicon', 'kunena');
-		$this->uninstallPlugin('system', 'kunena');
 
 		$this->uninstallModule('mod_kunenamenu');
 
@@ -515,8 +513,6 @@ class KunenaModelInstall extends JModelLegacy {
 	}
 
 	public function stepPlugins() {
-		$this->installPlugin('install/plugins/plg_system_kunena', 'system', 'kunena', true);
-		$this->installPlugin('install/plugins/plg_quickicon_kunena', 'quickicon', 'kunena', true);
 		// TODO: Complete smart search support
 		$this->uninstallPlugin('finder', 'kunena');
 		//$this->installPlugin('install/plugins/plg_finder_kunena', 'finder', 'kunena', false, 1);
@@ -601,6 +597,11 @@ class KunenaModelInstall extends JModelLegacy {
 		// Clean cache, just in case
 		KunenaMenuHelper::cleanCache();
 		JFactory::getCache('com_kunena')->clean();
+
+		// Delete installer file (only if not using GIT build).
+		if (!KunenaForum::isDev()) {
+			JFile::delete(KPATH_ADMIN.'/install.php');
+		}
 
 		if (! $this->getInstallError ()) {
 			$this->updateVersionState ( '' );

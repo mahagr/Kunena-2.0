@@ -23,7 +23,7 @@ if (is_file($installer)) {
 }
 
 // Safety check to prevent fatal error if 'System - Kunena Forum' plug-in has been disabled.
-if (!class_exists('KunenaForum') || !KunenaForum::isCompatible('3.0')) {
+if (JRequest::getCmd('view') == 'install' || !class_exists('KunenaForum') || !KunenaForum::isCompatible('3.0')) {
 	// Run installer instead..
 	require_once __DIR__ . '/install/controller.php';
 	$controller = new KunenaControllerInstall();

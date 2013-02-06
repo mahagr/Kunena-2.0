@@ -2,8 +2,8 @@
 <!DOCTYPE extension>
 <extension type="component" version="2.5" method="upgrade">
 	<name>com_kunena</name>
-	<version>2.9.90-DEV</version>
-	<versionname>Wanga</versionname>
+	<version>@kunenaversion@</version>
+	<versionname>@kunenaversionname@</versionname>
 	<creationDate>@kunenaversiondate@</creationDate>
 	<author>Kunena Team</author>
 	<authorEmail>kunena@kunena.org</authorEmail>
@@ -16,6 +16,12 @@
 		<filename>index.html</filename>
 		<filename>kunena.php</filename>
 		<filename>router.php</filename>
+		<folder>controllers</folder>
+		<folder>language</folder>
+		<folder>lib</folder>
+		<folder>models</folder>
+		<folder>template</folder>
+		<folder>views</folder>
 	</files>
 	<administration>
 		<menu view="cpanel" img="components/com_kunena/media/icons/favicons/kunena-logo-white.png">COM_KUNENA</menu>
@@ -33,9 +39,15 @@
 			<filename>api.php</filename>
 			<filename>install.php</filename>
 			<filename>kunena.php</filename>
+			<filename>access.xml</filename>
+			<filename>config.xml</filename>
+			<folder>controllers</folder>
+			<folder>images</folder>
 			<folder>install</folder>
-			<folder>archive</folder>
 			<folder>language</folder>
+			<folder>media</folder>
+			<folder>models</folder>
+			<folder>views</folder>
 		</files>
 	</administration>
 	<updateservers>

@@ -598,8 +598,8 @@ HTML;
 	}
 }
 
-require_once KPATH_ADMIN.'/libraries/external/cssmin/jsmin.php';
-require_once KPATH_ADMIN.'/libraries/external/cssmin/cssmin.php';
+require_once KPATH_FRAMEWORK . '/external/cssmin/jsmin.php';
+require_once KPATH_FRAMEWORK . '/external/cssmin/cssmin.php';
 
 class CssKunenaFormatter extends aCssFormatter {
 	public function __toString() {
