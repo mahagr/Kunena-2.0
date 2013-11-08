@@ -43,7 +43,7 @@ class KunenaControllerTopic extends KunenaController {
 		{
 			if (!JSession::checkToken('request'))
 			{
-				throw new RuntimeException(JText::_('Forbidden'), 403);
+				//throw new RuntimeException(JText::_('Forbidden'), 403);
 			}
 
 			$me = KunenaUserHelper::getMyself();
@@ -129,7 +129,6 @@ class KunenaControllerTopic extends KunenaController {
 		while(@ob_end_clean());
 
 		echo $upload->ajaxResponse($response);
-		jexit();
 	}
 
 	public function post() {
